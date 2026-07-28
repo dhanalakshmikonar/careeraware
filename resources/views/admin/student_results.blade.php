@@ -47,7 +47,7 @@
         <div class="col-lg-4">
             <div class="glass-card p-4">
                 <h4 class="fw-bold mb-4"><i class="fa-solid fa-dna text-violet me-2" style="color: var(--accent-primary);"></i>Career DNA</h4>
-                <p class="text-muted small mb-4">Raw interest scores calculated across all 15 technical career paths.</p>
+                <p class="text-muted small mb-4">Interest-fit scores from the student's selected answers. These are assessment signals, not guarantees of career success.</p>
 
                 <div class="d-flex flex-column gap-3">
                     @php
@@ -78,7 +78,7 @@
             <h3 class="fw-bold mb-4 text-glow-cyan"><i class="fa-solid fa-medal text-warning me-2"></i>Top 3 Career Recommendations</h3>
 
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs border-secondary mb-4" id="recommendationTabs" role="tablist">
+            <ul class="nav nav-tabs recommendation-tabs mb-4" id="recommendationTabs" role="tablist">
                 @foreach($result->top_careers as $index => $career)
                     <li class="nav-item" role="presentation">
                         <button class="nav-link {{ $index === 0 ? 'active text-glow-cyan text-white' : 'text-muted' }} fw-bold" 
@@ -89,7 +89,7 @@
                             aria-controls="panel-{{ $career['code'] }}" 
                             aria-selected="{{ $index === 0 ? 'true' : 'false' }}">
                             #{{ $index + 1 }} {{ $career['name'] }}
-                            <span class="badge bg-secondary ms-1 small">{{ $career['confidence'] }}%</span>
+                            <span class="badge bg-secondary ms-1 small">{{ $career['confidence'] }}% fit</span>
                         </button>
                     </li>
                 @endforeach
@@ -98,6 +98,7 @@
             <!-- Tab content -->
             <div class="tab-content" id="recommendationTabsContent">
                 @foreach($result->top_careers as $index => $career)
+                    @php($hasEvidence = array_key_exists('answered_questions', $career) && array_key_exists('total_questions', $career))
                     <div class="tab-pane fade {{ $index === 0 ? 'show active' : '' }}" 
                         id="panel-{{ $career['code'] }}" 
                         role="tabpanel" 
@@ -116,6 +117,35 @@
                                         <div><span class="text-muted small">Salary:</span> <span class="text-white fw-bold float-end">{{ $career['salary_range'] }}</span></div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row g-3 mb-5" aria-label="Assessment evidence">
+                                <div class="col-sm-4">
+                                    <div class="p-3 bg-dark rounded border border-secondary h-100">
+                                        <span class="text-muted small d-block">Assessment fit</span>
+                                        <span class="fs-4 fw-bold text-white">{{ $career['confidence'] }}%</span>
+                                        <span class="text-muted small d-block">of this path's possible score</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="p-3 bg-dark rounded border border-secondary h-100">
+                                        <span class="text-muted small d-block">Answer coverage</span>
+                                        <span class="fs-4 fw-bold text-white">{{ $hasEvidence ? $career['answered_questions'].'/'.$career['total_questions'] : 'Saved result' }}</span>
+                                        <span class="text-muted small d-block">{{ $hasEvidence ? 'questions included in the result' : 'evidence details available on new assessments' }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="p-3 bg-dark rounded border border-secondary h-100">
+                                        <span class="text-muted small d-block">Supporting answers</span>
+                                        <span class="fs-4 fw-bold text-white">{{ $hasEvidence ? ($career['supporting_answers'] ?? 0) : '—' }}</span>
+                                        <span class="text-muted small d-block">{{ $hasEvidence ? 'answers that aligned with this path' : 'not stored in this legacy result' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert mb-5 py-3" style="background: rgba(6, 182, 212, .08); border-color: rgba(6, 182, 212, .35); color: var(--text-main);">
+                                <i class="fa-solid fa-circle-info me-2" style="color: var(--accent-secondary);"></i>
+                                <strong>How to read this:</strong> this recommendation ranks the weighted answers in this questionnaire. It is most useful as a discussion and learning-plan guide; interests, skills, academic performance, and real project work should also inform a final career choice.
                             </div>
 
                             <!-- SWOT Analysis -->

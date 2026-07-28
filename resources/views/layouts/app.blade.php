@@ -261,6 +261,39 @@
             border-bottom-right-radius: 8px;
         }
 
+        /* Career report tabs: override Bootstrap's light active tab treatment. */
+        .recommendation-tabs {
+            border-bottom-color: var(--border-color) !important;
+            gap: .35rem;
+        }
+
+        .recommendation-tabs .nav-link {
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: -1px;
+        }
+
+        .recommendation-tabs .nav-link:hover,
+        .recommendation-tabs .nav-link:focus {
+            color: #fff;
+            background: rgba(139, 92, 246, .12);
+            border-color: rgba(139, 92, 246, .35);
+        }
+
+        .recommendation-tabs .nav-link.active,
+        .recommendation-tabs .show > .nav-link {
+            color: #fff !important;
+            background: var(--bg-tertiary) !important;
+            border-color: var(--accent-primary) var(--accent-primary) var(--bg-tertiary) !important;
+            box-shadow: inset 0 3px 0 var(--accent-secondary);
+        }
+
+        .recommendation-tabs .nav-link.active .badge {
+            background: rgba(6, 182, 212, .24) !important;
+            color: #dffbff;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
