@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Report - {{ $student->name }}</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #0b0f19; color: #f8fafc; padding: 40px; line-height: 1.6; }
@@ -14,6 +15,14 @@
         ul { padding-left: 20px; color: #94a3b8; }
         .skill { display: inline-block; background: #1b2436; padding: 4px 10px; border-radius: 6px; margin: 2px; font-size: 0.85rem; }
         .score-row { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 6px; color: #94a3b8; }
+        @media (max-width: 600px) {
+            body { padding: 20px 16px; }
+            .header { padding-bottom: 14px; margin-bottom: 20px; }
+            .career-block { padding: 16px; margin-bottom: 16px; }
+            .col { min-width: 100%; }
+            h1 { font-size: 1.65rem; }
+            h2 { font-size: 1.35rem; }
+        }
     </style>
 </head>
 <body>

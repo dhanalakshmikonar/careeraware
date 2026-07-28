@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Career Awareness & Recommendation System')</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +45,13 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        img, svg { max-width: 100%; }
 
         /* Glassmorphism Cards */
         .glass-card {
@@ -56,6 +63,12 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             
+        }
+
+        /* Keep the UI legible where blur is unsupported (older browsers). */
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            .glass-card { background: #131a26; }
+            .navbar-custom { background-color: #0b0f19; }
         }
 
         .glass-card:hover {
@@ -172,6 +185,14 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+        }
+
         /* Forms styling */
         .form-control-custom {
             background-color: var(--bg-tertiary) !important;
@@ -181,6 +202,10 @@
             padding: 12px 16px !important;
             transition: all 0.2s ease !important;
         }
+
+        .form-control-custom::placeholder { color: #cbd5e1; opacity: 1; }
+
+        select.form-control-custom option { background: var(--bg-tertiary); color: #fff; }
 
         .form-control-custom:focus {
             border-color: var(--accent-primary) !important;
@@ -260,6 +285,51 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--text-muted);
         }
+
+        /* Responsive defaults shared by every screen. */
+        .table-responsive { -webkit-overflow-scrolling: touch; }
+        .table-custom { min-width: 680px; }
+        .btn, button, .form-control, .form-select { min-height: 42px; }
+
+        @media (max-width: 991.98px) {
+            .navbar-custom { padding: 10px 0; }
+            .navbar-custom .navbar-collapse { padding-top: 12px; }
+            .navbar-custom .navbar-nav { margin: 0 0 10px !important; }
+            .navbar-custom .nav-link { padding: 10px 12px !important; }
+            .navbar-custom .d-flex.align-items-center { align-items: stretch !important; }
+            #userMenuButton, .navbar-custom .btn-link { padding-left: 12px; text-align: left; }
+        }
+
+        @media (max-width: 767.98px) {
+            main.container { padding-top: 1.5rem !important; padding-bottom: 2rem !important; }
+            .glass-card.p-5 { padding: 1.5rem !important; }
+            .glass-card.p-4 { padding: 1rem !important; }
+            h1 { font-size: clamp(1.6rem, 7vw, 2rem); }
+            h2 { font-size: clamp(1.35rem, 6vw, 1.75rem); }
+            .input-group { flex-wrap: wrap; }
+            .input-group > .form-control { flex: 1 1 180px; min-width: 0; }
+            .input-group > .btn { flex: 0 0 auto; }
+            .d-flex.gap-3.mt-5, .d-flex.gap-3, .btn-group.gap-2 { flex-wrap: wrap; }
+            .d-flex.gap-3.mt-5 > .btn, .d-flex.gap-3.mt-5 > .btn-premium { flex: 1 1 180px; text-align: center; }
+            .chart-container { height: 260px !important; }
+            footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+        }
+
+        @media (max-width: 575.98px) {
+            .container { --bs-gutter-x: 1rem; }
+            .navbar-custom .navbar-brand { font-size: 1.2rem; }
+            .navbar-custom .navbar-brand i { margin-right: .4rem !important; }
+            .btn-premium, .btn-premium-cyan, .btn-glass-secondary { padding: 10px 16px; }
+            .form-control-custom { padding: 10px 12px !important; font-size: 16px; }
+            .table-custom { min-width: 600px; }
+            .table-custom th, .table-custom td { padding: 12px; }
+            .answer-option { align-items: flex-start !important; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+            .glass-card:hover, .btn-premium:hover, .btn-premium-cyan:hover { transform: none; }
+        }
     </style>
     @yield('styles')
 </head>
@@ -273,7 +343,7 @@
                 <span>Career<span style="color: var(--accent-primary);">Aware</span></span>
             </a>
             
-            <button class="navbar-expand-lg navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
