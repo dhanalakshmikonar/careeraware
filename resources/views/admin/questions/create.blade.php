@@ -73,8 +73,8 @@
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <span class="small text-white fw-semibold">{{ $career->code }}</span>
                                                 <input type="number" name="options[{{ $i }}][weights][{{ $career->code }}]" 
-                                                    class="form-control form-control-custom py-1 px-2 border-0 text-center" 
-                                                    style="width: 45px; background: rgba(0,0,0,0.2) !important;" 
+                                                    class="form-control form-control-custom career-weight-input border-0 text-center" 
+                                                    style="background: rgba(0,0,0,0.2) !important;" 
                                                     min="0" max="5" value="0">
                                             </div>
                                         </div>
@@ -106,6 +106,13 @@
         flex: 0 0 20%;
         max-width: 20%;
     }
+}
+
+/* The global form padding is too large for the compact numeric score fields. */
+.career-weight-input {
+    width: 52px;
+    min-width: 52px;
+    padding: .25rem !important;
 }
 </style>
 @endsection
