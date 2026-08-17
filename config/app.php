@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\ServiceProvider;
 
 return [
 
@@ -124,6 +125,28 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+
+    /*
+     * Package Service Providers...
+     */
+
+])->merge([
+
+    /*
+     * Application Service Providers...
+     */
+
+    App\Providers\AppServiceProvider::class,
+
+])->merge([
+
+    /*
+     * Added Service Providers (Do not remove this line)...
+     */
+
+])->toArray(),
 
     /*
     |--------------------------------------------------------------------------
