@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "outputDirectory": null,
+  "outputDirectory": "public/build",
   "buildCommand": "npm run build",
   "functions": {
     "api/index.php": {
@@ -14,8 +14,8 @@
       "dest": "/api/index.php"
     },
     {
-      "src": "/(.*\\.(?:css|js|mjs|map|json|png|jpe?g|gif|svg|ico|webp|avif|woff2?|ttf|eot|webmanifest))$",
-      "dest": "/public/$1"
+      "src": "/build/(.*)",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
