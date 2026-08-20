@@ -62,6 +62,14 @@ Route::middleware(['auth', 'student'])->prefix('student')->name('student.')->gro
     Route::post('/assessment/complete', [StudentDashboardController::class, 'completeAssessment'])->name('assessment.complete');
     
     // Results
-    Route::get('/results', [StudentDashboardController::class, 'showResults'])->name('results');
-    Route::get('/results/report', [ExportController::class, 'downloadReport'])->name('results.report');
+Route::get('/results', [StudentDashboardController::class, 'showResults'])->name('results');
+Route::get('/results/report', [ExportController::class, 'downloadReport'])->name('results.report');
+
+// Review / Thank You
+Route::get('/review', function () {
+    return view('review');
+})->name('review');
+
+    
 });
+

@@ -87,6 +87,7 @@
                 <thead>
                     <tr>
                         <th>Student Name</th>
+                        <th>Mobile Number</th>
                         <th>Email Address</th>
                         <th>Department</th>
                         <th>Joined At</th>
@@ -97,6 +98,7 @@
                     @foreach($students as $student)
                         <tr>
                             <td><span class="text-white fw-semibold">{{ $student->name }}</span></td>
+                            <td><span class="text-muted"><i class="fa-solid fa-phone me-1 small"></i>{{ $student->phone ?? 'N/A' }}</span></td>
                             <td>{{ $student->email }}</td>
                             <td><span class="badge bg-secondary">{{ $student->department }}</span></td>
                             <td>{{ $student->pivot->joined_at->format('M d, Y - h:i A') }}</td>

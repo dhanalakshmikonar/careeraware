@@ -20,6 +20,9 @@
                     <h1 class="fw-bold mb-1 text-glow-cyan" style="color: var(--accent-secondary);">{{ $student->name }}</h1>
                     <p class="text-muted mb-0">
                         Email: {{ $student->email }}
+                        @if($student->phone)
+                            | Phone: {{ $student->phone }}
+                        @endif
                         @if($result)
                             | Assessment taken on {{ $result->created_at->format('M d, Y') }}
                         @endif

@@ -205,5 +205,11 @@
             </div>
         </div>
     </div>
+
+    <div class="d-flex justify-content-end mt-4">
+        <a href="{{ route('student.review') }}" class="btn btn-premium px-4 py-2">
+            Continue &rarr;
+        </a>
+    </div>
 @endif
 @endsection

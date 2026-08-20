@@ -25,7 +25,7 @@
                 <span class="input-group-text bg-slate border-slate text-muted" style="border: 1px solid var(--border-color); background-color: var(--bg-tertiary);">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input type="text" name="search" id="search" class="form-control form-control-custom" placeholder="Search by name or email..." value="{{ request('search') }}">
+                <input type="text" name="search" id="search" class="form-control form-control-custom" placeholder="Search by name, email, or phone..." value="{{ request('search') }}">
             </div>
         </div>
 
@@ -63,6 +63,7 @@
                 <thead>
                     <tr>
                         <th>Student Name</th>
+                        <th>Mobile Number</th>
                         <th>Email Address</th>
                         <th>Department</th>
                         <th>Registered Date</th>
@@ -75,6 +76,9 @@
                         <tr>
                             <td>
                                 <span class="fw-semibold text-white">{{ $student->name }}</span>
+                            </td>
+                            <td>
+                                <span class="text-muted"><i class="fa-solid fa-phone me-1 small"></i>{{ $student->phone ?? 'N/A' }}</span>
                             </td>
                             <td>{{ $student->email }}</td>
                             <td>

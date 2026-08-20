@@ -26,7 +26,7 @@ class ExportController extends Controller
         return response()->streamDownload(function () use ($students) {
             $handle = fopen('php://output', 'w');
 
-            fputcsv($handle, ['Name', 'Email', 'Department', 'Registered On', 'Top Career', 'Confidence (%)', 'Assessment Status']);
+            fputcsv($handle, ['Name', 'Email', 'Mobile Number', 'Department', 'Registered On', 'Top Career', 'Confidence (%)', 'Assessment Status']);
 
             foreach ($students as $student) {
                 $result = $student->results->sortByDesc('created_at')->first();
@@ -35,6 +35,7 @@ class ExportController extends Controller
                 fputcsv($handle, [
                     $student->name,
                     $student->email,
+                    $student->phone ?? 'N/A',
                     $student->department ?? 'Other',
                     $student->created_at->format('Y-m-d'),
                     $topCareer['name'] ?? '',

@@ -59,6 +59,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:20'],
             'department' => ['required', 'string', 'in:Science & Tech,Engineering,Business & Finance,Arts & Design,Social Sciences,Other'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
@@ -67,6 +68,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'role' => 'student',
             'department' => $request->department,
