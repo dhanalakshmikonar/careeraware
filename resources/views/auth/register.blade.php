@@ -54,6 +54,31 @@
                     @enderror
                 </div>
 
+                <!-- Mobile Number Input -->
+<div class="mb-4">
+    <label for="phone" class="form-label-custom">Mobile Number</label>
+    <div class="input-group">
+        <span class="input-group-text border-slate bg-slate text-muted"
+              style="border: 1px solid var(--border-color); background-color: var(--bg-tertiary);">
+            <i class="fa-solid fa-phone"></i>
+        </span>
+
+        <input type="tel"
+               name="phone"
+               id="phone"
+               class="form-control form-control-custom @error('phone') is-invalid @enderror"
+               placeholder="Enter mobile number"
+               value="{{ old('phone') }}"
+               required
+               autocomplete="tel">
+
+    </div>
+
+    @error('phone')
+        <div class="invalid-feedback d-block mt-2">{{ $message }}</div>
+    @enderror
+</div>
+
                 <!-- Email Input -->
                 <div class="mb-4">
                     <label for="email" class="form-label-custom">Email Address</label>
