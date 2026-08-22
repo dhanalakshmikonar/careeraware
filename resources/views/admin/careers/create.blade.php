@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add Career Path - CareerAware')
+@section('title', 'Add Career Path - WatyAssessment')
 
 @section('content')
 <div class="row justify-content-center">

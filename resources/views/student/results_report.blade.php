@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Report - {{ $student->name }}</title>
+    <title>WatyAssessment Report - {{ $student->name }}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #0b0f19; color: #f8fafc; padding: 40px; line-height: 1.6; }
         h1, h2, h3 { color: #f8fafc; }
-        .header { border-bottom: 2px solid #334155; padding-bottom: 20px; margin-bottom: 30px; }
+        .header { border-bottom: 2px solid #334155; padding-bottom: 20px; margin-bottom: 30px; display: flex; align-items: center; }
         .career-block { background: #131a26; border: 1px solid #334155; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
         .badge { display: inline-block; background: #1b2436; border: 1px solid #334155; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; color: #94a3b8; }
         .grid { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
@@ -20,15 +23,18 @@
             .header { padding-bottom: 14px; margin-bottom: 20px; }
             .career-block { padding: 16px; margin-bottom: 16px; }
             .col { min-width: 100%; }
-            h1 { font-size: 1.65rem; }
+            h1 { font-size: 1.4rem; }
             h2 { font-size: 1.35rem; }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Career Recommendation Report</h1>
-        <p>Prepared for <strong>{{ $student->name }}</strong> ({{ $student->email }}) &mdash; generated {{ $result->created_at->format('M d, Y') }}</p>
+        <img src="{{ asset('images/logo.png') }}" alt="WatyAssessment Logo" style="height: 48px; width: auto; margin-right: 16px;">
+        <div>
+            <h1 style="margin: 0;">WatyAssessment Recommendation Report</h1>
+            <p style="margin: 4px 0 0 0; color: #94a3b8;">Prepared for <strong>{{ $student->name }}</strong> ({{ $student->email }}) &mdash; generated {{ $result->created_at->format('M d, Y') }}</p>
+        </div>
     </div>
 
     <h2>Career DNA (Raw Scores)</h2>

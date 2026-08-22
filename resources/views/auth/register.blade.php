@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Register - CareerAware')
+@section('title', 'Register - WatyAssessment')
 
 @section('content')
 <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
     <div class="col-md-6">
         <div class="glass-card p-5">
             <div class="text-center mb-5">
-                <i class="fa-solid fa-user-plus fs-1 text-glow-violet mb-3" style="color: var(--accent-primary);"></i>
+                <img src="{{ asset('images/logo.png') }}" alt="WatyAssessment Logo" style="height: 55px; width: auto;" class="mb-3 d-block mx-auto">
                 <h2 class="fw-bold">Student Registration</h2>
                 <p class="text-muted">Create an account to discover your perfect career path</p>
             </div>

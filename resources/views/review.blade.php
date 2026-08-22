@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Thank You - CareerAware')
+@section('title', 'Thank You - WatyAssessment')
 
 @section('content')
 
@@ -11,8 +11,9 @@
          style="max-width: 650px; width: 100%;">
 
         <div class="mb-4">
+            <img src="{{ asset('images/logo.png') }}" alt="WatyAssessment Logo" style="height: 65px; width: auto;" class="mb-3 d-block mx-auto">
             <i class="fa-solid fa-circle-check text-success"
-               style="font-size: 70px;"></i>
+               style="font-size: 50px;"></i>
         </div>
 
         <h1 class="mb-3">
@@ -21,7 +22,7 @@
 
         <p class="lead mb-4">
             Thank you for completing your assessment with
-            <strong>CareerAware</strong>.
+            <strong>WatyAssessment</strong>.
         </p>
 
         <p class="text-muted mb-4">
@@ -35,7 +36,7 @@
             </h4>
 
             <p class="text-muted">
-                Your feedback helps us improve CareerAware
+                Your feedback helps us improve WatyAssessment
                 and helps other students discover
                 <strong>WatY Learning Hub</strong>.
             </p>

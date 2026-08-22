@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $career->name . ' - CareerAware')
+@section('title', $career->name . ' - WatyAssessment')
 
 @section('content')
 <div class="row mb-4">

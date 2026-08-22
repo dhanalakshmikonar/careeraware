@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Manage Sessions - CareerAware')
+@section('title', 'Manage Sessions - WatyAssessment')
 
 @section('content')
 <div class="row mb-5 align-items-center">

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Login - CareerAware')
+@section('title', 'Login - WatyAssessment')
 
 @section('content')
 <div class="row justify-content-center align-items-center" style="min-height: 60vh;">
     <div class="col-md-5">
         <div class="glass-card p-5">
             <div class="text-center mb-5">
-                <i class="fa-solid fa-rocket fs-1 text-glow-cyan mb-3" style="color: var(--accent-secondary);"></i>
+                <img src="{{ asset('images/logo.png') }}" alt="WatyAssessment Logo" style="height: 55px; width: auto;" class="mb-3 d-block mx-auto">
                 <h2 class="fw-bold">Welcome Back</h2>
                 <p class="text-muted">Sign in to continue to your career portal</p>
             </div>
@@ -59,7 +59,7 @@
 
                 <!-- Registration Link -->
                 <div class="text-center">
-                    <span class="text-muted small">New to CareerAware?</span>
+                    <span class="text-muted small">New to WatyAssessment?</span>
                     <a href="{{ route('register') }}" class="text-glow-cyan ms-1 text-decoration-none small" style="color: var(--accent-secondary); font-weight: 500;">
                         Create Student Account
                     </a>

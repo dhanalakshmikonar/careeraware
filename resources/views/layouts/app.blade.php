@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Career Awareness & Recommendation System')</title>
+    <title>@yield('title', 'WatyAssessment - Career Recommendation System')</title>
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -372,8 +376,8 @@
     <nav class="navbar navbar-expand-lg navbar-custom navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <i class="fa-solid fa-graduation-cap me-2 text-glow-cyan" style="color: var(--accent-secondary);"></i>
-                <span>Career<span style="color: var(--accent-primary);">Aware</span></span>
+                <img src="{{ asset('images/logo.png') }}" alt="WatyAssessment Logo" style="height: 38px; width: auto;" class="me-2">
+                <span>Waty<span style="color: var(--accent-primary);">Assessment</span></span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -475,7 +479,7 @@
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p class="mb-1">&copy; {{ date('Y') }} CareerAware. All rights reserved.</p>
+            <p class="mb-1">&copy; {{ date('Y') }} WatyAssessment. All rights reserved.</p>
             <p class="mb-0 small">Powered by Waty AI Technologies.</p>
         </div>
     </footer>
